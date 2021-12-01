@@ -740,19 +740,8 @@ function! <SID>FindOrCreateBuffer(fileName, doSplit, findSimilar)
   let bang = a:doSplit[1]
   if (bufNr == -1)
      " Buffer did not exist....create it
-     let v:errmsg=""
-     if (splitType == "h")
-        silent! execute ":split".bang." " . FILENAME
-     elseif (splitType == "v")
-        silent! execute ":vsplit".bang." " . FILENAME
-     elseif (splitType == "t")
-        silent! execute ":tab split".bang." " . FILENAME
-     else
-        silent! execute ":e".bang." " . FILENAME
-     endif
-     if (v:errmsg != "")
-        echo v:errmsg
-     endif
+     let v:errmsg="header/source file cannot be found"
+     echo v:errmsg
   else
 
      " Find the correct tab corresponding to the existing buffer
